@@ -48,17 +48,46 @@ import org.slf4j.LoggerFactory;
         logger.info("CPU Usage: {}%", cpu);
         logger.info("Memory Usage: {}%", memoryPercentage);
 
-        // Check for alerts
+        // Check for high CPU usage alert
         if (cpu > 80.0) {
             Alert alert = new Alert();
-            alert.setMessage("High CPU Usage: " + cpu + "%");
+            alert.setMessage("Danger: High CPU Usage: " + cpu + "%");
             alertRepository.save(alert);
-            logger.warn("🚨 {}", alert.getMessage());        }
+            logger.error("🚨 Danger: High CPU Usage: {}%", cpu);
+        } else if (cpu > 20.0) {
+            Alert alert = new Alert();
+            alert.setMessage("Warning: CPU Usage: " + cpu + "%");
+            alertRepository.save(alert);
+            logger.warn("⚠️ Warning: CPU Usage: {}%", cpu);
+        }
+
+        // Check for high memory usage alert
         if (memoryPercentage > 90.0) {
             Alert alert = new Alert();
-            alert.setMessage("High Memory Usage: " + memoryPercentage + "%");
+            alert.setMessage("Danger: High Memory Usage: " + memoryPercentage + "%");
             alertRepository.save(alert);
-            logger.warn("🚨 {}", alert.getMessage());
+            logger.error("🚨 Danger: High Memory Usage: {}%", memoryPercentage);
+        } else if (memoryPercentage > 65.0) {
+            Alert alert = new Alert();
+            alert.setMessage("Warning: Memory Usage: " + memoryPercentage + "%");
+            alertRepository.save(alert);
+            logger.warn("⚠️ Warning: Memory Usage: {}%", memoryPercentage);
+        }
+
+        // Lower limit alerts for CPU usage (e.g., below 10%)
+        if (cpu < 10.0) {
+            Alert alert = new Alert();
+            alert.setMessage("Low CPU Usage: " + cpu + "%");
+            alertRepository.save(alert);
+            logger.info("💡 Low CPU Usage: {}%", cpu);
+        }
+
+        // Lower limit alerts for memory usage (e.g., below 30%)
+        if (memoryPercentage < 30.0) {
+            Alert alert = new Alert();
+            alert.setMessage("Low Memory Usage: " + memoryPercentage + "%");
+            alertRepository.save(alert);
+            logger.info("💡 Low Memory Usage: {}%", memoryPercentage);
         }
 
         // Log stats
