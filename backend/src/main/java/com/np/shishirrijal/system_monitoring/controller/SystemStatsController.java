@@ -16,12 +16,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 
 public class SystemStatsController{
 
     private final SystemSnapshotRepository snapshotRepository;
     private final AlertRepository alertRepository;
+
+    public SystemStatsController(SystemSnapshotRepository snapshotRepository,
+                                 AlertRepository alertRepository) {
+        this.snapshotRepository = snapshotRepository;
+        this.alertRepository = alertRepository;
+    }
 
     @GetMapping("/snapshots")
     public List<SystemSnapshot> getSnapshots() {
