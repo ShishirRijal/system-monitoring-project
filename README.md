@@ -1,6 +1,6 @@
 
 
-# NEUROSYS MONITOR
+# NEUROSYS MONITOR | A Cross Platform System Monitoring Tool
 <p><em>Advanced system monitoring made simple</em></p>
 <div align="center">
   
@@ -153,7 +153,7 @@ NEUROSYS MONITOR offers multiple visualization options for different monitoring 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ShishirRijal/neurosys-monitor.git
+   git clone https://github.com/ShishirRijal/system-monitoring-project.git
    cd neurosys-monitor
    ```
 
