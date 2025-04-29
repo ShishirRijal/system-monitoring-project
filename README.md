@@ -16,6 +16,7 @@
 NEUROSYS MONITOR is a lightweight full-stack application for real-time system performance tracking.
 It features a sleek Flutter web frontend and a reliable Spring Boot backend, offering an easy and effective way to monitor system resources with clarity and speed.
 
+
 Designed with simplicity and functionality in mind, it provides a smooth user experience without unnecessary complexity.
 
 <div align="center">
@@ -27,6 +28,10 @@ Designed with simplicity and functionality in mind, it provides a smooth user ex
 ## ✨ Key Features
 
 - **Real-time Metrics Visualization**: Monitor CPU, memory, and system performance with dynamic, responsive visualizations
+- **Email Notification System** that sends automated alerts for critical resource usage, ensuring immediate awareness of system issues.
+
+<img src="https://github.com/user-attachments/assets/a0956c89-8290-46c7-b1fe-3b7f62fcebc5" width="500"/>
+
 - **Intelligent Alert System**: Receive immediate notifications when systems exceed normal parameters
 - **Historical Data Analysis**: Track performance trends over time with comprehensive data storage
 - **User-friendly Interface**: Navigate through complex system data with an intuitive, futuristic UI
@@ -115,7 +120,7 @@ NEUROSYS implements a multi-level alert system to categorize issues by severity:
 | Low | < 10% | < 30% | Info logging |
 | Normal | 10-20% | 30-65% | Standard monitoring |
 | Warning | 20-80% | 65-90% | Alert generation |
-| Danger | > 80% | > 90% | Critical alert & notification |
+| Danger | > 80% | > 90% | Critical alert, database entry, & email notification |
 
 ## 🖥️ UI Components
 
@@ -184,6 +189,17 @@ Edit `application.properties` to configure database connections, logging levels,
 spring.datasource.url=jdbc:mysql://localhost:3306/neurosys
 spring.datasource.username=root
 spring.datasource.password=password
+
+# Email Configuration (e.g., Gmail SMTP)
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your.email@gmail.com
+spring.mail.password=your_app_password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+app.email.sender=your.email@gmail.com
+app.email.receiver=recipient@example.com
+
 ```
 
  
